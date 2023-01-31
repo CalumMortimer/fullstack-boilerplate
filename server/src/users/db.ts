@@ -9,7 +9,7 @@ export const get = async (): Promise<User[]> => {
     database: 'postgres',
   });
   client.connect();
-  const { rows } = await client.query(/* sql */`
+  const { rows } = await client.query(/* sql */ `
     SELECT
       id::text, name
     FROM
@@ -27,14 +27,17 @@ export const getByID = async (id: string): Promise<User> => {
     database: 'postgres',
   });
   client.connect();
-  const { rows } = await client.query(/* sql */`
+  const { rows } = await client.query(
+    /* sql */ `
     SELECT
       id::text, name
     FROM
       users
     WHERE
       id = $1;
-  `, [id]);
+  `,
+    [id]
+  );
   client.end();
   return rows[0];
 };

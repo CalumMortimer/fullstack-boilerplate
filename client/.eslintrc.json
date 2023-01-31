@@ -1,28 +1,55 @@
 {
+  "env": {
+    "es2021": true,
+    "browser": true,
+    "jest": true
+  },
   "extends": [
-    "react-app",
-    "react-app/jest"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
   ],
-  "plugins": [
-    "jsx-a11y"
-  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "import"],
   "rules": {
-    "comma-dangle": [
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "prettier/prettier": "error",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "import/order": [
       "error",
       {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "always-multiline",
-        "exports": "always-multiline",
-        "functions": "always-multiline"
+        "newlines-between": "never",
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"]
+        ]
       }
-    ],
-    "no-undef": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-pascal-case": "off",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["off", {
-      "ignoreRestSiblings": true
-    }]
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    },
+    "import/external-module-folders": ["node_modules"]
   }
 }

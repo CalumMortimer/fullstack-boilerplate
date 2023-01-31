@@ -1,12 +1,12 @@
-import axios from "axios";
-import { useState } from "react";
-import { User } from "../../types";
+import axios from 'axios';
+import { useState } from 'react';
+import { User } from '../../types';
 
 export const App = () => {
   const [userID, setUserID] = useState<string>('');
   const [user, setUser] = useState<User>({
-    id: "",
-    name: "",
+    id: '',
+    name: '',
   });
 
   const getAUser = async () => {
@@ -16,7 +16,7 @@ export const App = () => {
       },
     });
     setUser(response.data);
-  }
+  };
 
   return (
     <>
